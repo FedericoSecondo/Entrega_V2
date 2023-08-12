@@ -1,0 +1,16 @@
+{% extends 'acciones/base.html' %}
+{% block titulo %}
+    Agregar Resultado Económico
+{% endblock titulo %}
+
+{% block cabecera %}
+    Agregar Resultado Económico
+{% endblock cabecera %}
+
+{% block contenido %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock contenido %}

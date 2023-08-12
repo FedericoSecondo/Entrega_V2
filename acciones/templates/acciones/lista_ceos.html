@@ -1,0 +1,57 @@
+{% extends 'acciones/base.html' %}
+{% load static %}
+
+{% block titulo%}
+
+    Informacion Financiera
+
+{% endblock titulo %}
+
+{% block cabecera%}
+
+    Informacion Sobre Empresas
+    <a href="{% url 'agregar_ceo' %}" class="enlace-agregar text-dark">Agregar CEO</a>
+ 
+{% endblock cabecera %}
+
+{% block contenido %}
+    <h1>Lista de CEOs</h1>
+    <table style="border-collapse: separate; border-spacing: 10px;">
+        <thead>
+            <tr>
+                <th>Simbolo</th>
+                <th>Director</th>
+                <th>Nacionalidad</th>
+                <th>Sitio Web</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ceo in ceos %}
+            <tr>
+                <td>{{ ceo.accion.simbolo }}</td>
+                <td>{{ ceo.nombre_director }}</td>
+                <td>{{ ceo.nacionalidad }}</td>
+                <td><a href="{{ ceo.sitio_web }}">{{ ceo.sitio_web }}</a></td>
+                <td>
+                    <a
+                      href="{% url 'editar_ceo' ceo.id %}"
+                      class="btn btn-primary"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                    </a>
+                    <a
+                      href="{% url 'eliminar_ceo' ceo.id %}"
+                      class="btn btn-danger"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                    </a>
+                </td>  
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock contenido %}
+
+

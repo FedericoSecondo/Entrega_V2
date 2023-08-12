@@ -1,0 +1,50 @@
+{% extends 'acciones/base.html' %}
+{% load static %}
+{% block titulo %}
+    Resultados Económicos (en millones de USD)
+{% endblock titulo %}
+
+{% block cabecera %}
+    Resultados Económicos y Proyecciones 
+    <a href="{% url 'agregar_resultado' %}" class="enlace-agregar text-dark">Agregar Resultado Económico</a>
+
+{% endblock cabecera %}
+
+{% block contenido %}
+    <h3>Lista de Resultados Económicos (En millones de USD)</h3>
+    <table class="compras-table">
+        <thead>
+            <tr>
+                <th style="padding-right: 20px;">Simbolo</th>
+                <th style="padding-right: 20px;">Último Año</th>
+                <th style="padding-right: 20px;">Próximo Año</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for resultado in resultados %}
+            <tr>
+                <td>{{ resultado.accion_comprada.simbolo }}</td>
+                <td>{{ resultado.resultado_ultimo_anio }}</td>
+                <td>{{ resultado.proyeccion_proximo_anio }}</td>
+                <td>
+                    <a
+                      href="#""
+                      class="btn btn-primary"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                    </a>
+                    <a
+                      href="#"
+                      class="btn btn-danger"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock contenido %}
+
+
+

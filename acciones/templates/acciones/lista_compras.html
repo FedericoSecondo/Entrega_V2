@@ -1,0 +1,36 @@
+{% extends 'acciones/base.html' %}
+{% load static %}
+{% block titulo %}
+    Acciones compradas
+{% endblock titulo %}
+
+{% block cabecera %}
+    Lista de Acciones Compradas
+  
+{% endblock cabecera %}
+
+{% block contenido %}
+    <h1>Lista de Compras</h1>
+
+
+    <table style="border-collapse: separate; border-spacing: 10px;">
+        <thead>
+            <tr>
+                <th>Simbolo</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for compra in compras %}
+            <tr>
+                <td>{{ compra.simbolo }}</td>
+                <td>{{ compra.cantidad }}</td>
+                <td>{{ compra.precio }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock contenido %}
+
+

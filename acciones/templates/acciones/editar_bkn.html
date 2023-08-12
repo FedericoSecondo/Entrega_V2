@@ -1,0 +1,15 @@
+{% extends 'acciones/base.html' %}
+
+{% block titulo %}
+    Editar BKN - {{ bkn.empresa }}
+{% endblock titulo %}
+
+{% block contenido %}
+    <h2>Editar BKN - {{ bkn.empresa }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+    </form>
+    <a href="{% url 'lista_bkn' %}" class="btn btn-secondary">Cancelar</a>
+{% endblock contenido %}

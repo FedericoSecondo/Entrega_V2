@@ -1,0 +1,55 @@
+{% extends 'acciones/base.html' %}
+{% load static %}
+{% block titulo %}
+    Monitoreo de ETFs
+{% endblock titulo %}
+
+{% block cabecera %}
+    <h1>Listado de ETF a Monitorear</h1>
+    <!-- Enlace para acceder al formulario -->
+    <a href="{% url 'agregar_etf' %}" class="enlace-agregar text-dark">Agregar ETF</a>
+{% endblock cabecera %}
+
+{% block contenido %}
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th colspan="1"></th>
+                    <th colspan="1">Simbolo</th>
+                    <th colspan="1">Nombre</th>
+                    <th colspan="1">Subyacente</th>
+                    <th colspan="1">Precio Target</th>
+                    <th colspan="1">Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for etf in etf %}
+                <tr>
+                    <td>{{ etf.id }}</td>
+                    <td>{{ etf.simbolo }}</td>
+                    <td>{{ etf.nombre }}</td>
+                    <td>{{ etf.subyacente }}</td>
+                    <td>{{ etf.precioTarget }}</td>
+                    <td>
+                        <a
+                          href="{% url 'editar_etf' etf.id %}"
+                          class="btn btn-primary"
+                          style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                          ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                        </a>
+                        <a
+                          href="{% url 'eliminar_etf' etf.id %}"
+                          class="btn btn-danger"
+                          style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                          ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                        </a>
+                    </td>        
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock contenido %}
+
+

@@ -1,0 +1,20 @@
+{% extends 'acciones/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Agregar Información Financiera
+{% endblock titulo %}
+
+{% block cabecera %}
+    Agregar Información Financiera
+    <a href="{% url 'agregar_informacion_financiera' %}" class="enlace-agregar">Agregar Información Financiera</a>
+
+{% endblock cabecera %}
+
+{% block contenido %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar</button>
+    </form>
+{% endblock contenido %}

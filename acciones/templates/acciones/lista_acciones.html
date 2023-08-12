@@ -1,0 +1,58 @@
+{% extends 'acciones/base.html' %}
+{% load static %}
+{% block titulo %}
+    Monitoreo de Acciones
+{% endblock titulo %}
+
+{% block cabecera %}
+    Listado de Acciones a Monitorear
+    <!-- Enlace para acceder al formulario -->
+    <a href="{% url 'agregar_accion' %}" class="enlace-agregar text-dark">Agregar Acción</a>
+
+    
+
+{% endblock cabecera %}
+
+{% block contenido %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th style="text-align: center;">Simbolo</th>
+                <th style="text-align: center;">Descripción</th> <!-- Añade estilo para centrar -->
+                <th>Fecha de Fundación</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for accion in acciones %}
+            <tr>
+                <td>{{ accion.id }}</td>
+                <td>{{ accion.simbolo }}</td>
+                <td>{{ accion.descripcion }}</td>
+                <td>{{ accion.fecha_fundacion }}</td>
+                <td>
+                    <a
+                      href="{% url 'update_accion' id_accion=accion.id %}"
+                      class="btn btn-primary"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-edit fa-sm" title="Edit Record"></i>
+                    </a>
+                    <a
+                      href="{% url 'deleteAccion' accion.id %}"
+                      class="btn btn-danger"
+                      style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"
+                      ><i class="fa fa-trash fa-sm" title="Delete Record"></i>
+                    </a>
+                </td>        
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock contenido %}
+
+
+    
+    
+
+

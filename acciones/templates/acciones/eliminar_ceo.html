@@ -1,0 +1,19 @@
+{% extends 'acciones/base.html' %}
+{% load static %}
+
+{% block titulo %}
+    Eliminar CEO
+{% endblock titulo %}
+
+{% block cabecera %}
+    Confirmar Eliminación de CEO
+{% endblock cabecera %}
+
+{% block contenido %}
+    <h4>¿Estás seguro de que deseas eliminar este CEO?</h4>
+    <p>CEO: {{ ceo }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Confirmar Eliminación</button>
+    </form>
+{% endblock contenido %}

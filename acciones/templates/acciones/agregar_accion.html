@@ -1,0 +1,18 @@
+{% extends 'acciones/base.html' %}
+{% load static %}
+{% block titulo %}
+    Agregar Acciones a Monitorear
+{% endblock titulo %}
+
+{% block cabecera %}
+    Formulario de Monitoreo de Acciones
+{% endblock cabecera %}
+
+{% block contenido %}
+    <h4>Agregar Acción</h4>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Agregar Acción</button>
+    </form>
+{% endblock contenido %}

@@ -1,0 +1,37 @@
+{% extends 'acciones/base.html' %}
+
+{% block titulo %}
+    Breaking News !
+{% endblock titulo %}
+
+{% block cabecera %}
+    <h1><a href="https://www.google.com/finance/?hl=es"class="enlace-agregar text-dark">Accede a Todo el Mercado de Capitales !</a></h1>
+    <h1>Breaking News !</h1>
+    <a href="{% url 'agregar_bkn' %}" class="enlace-agregar text-dark">Agregar Breaking News </a>
+{% endblock cabecera %}
+
+{% block contenido %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Empresa</th>
+                <th>Titular</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bkn_object in bkn_objects %}
+            <tr>
+                <td>{{ bkn_object.id }}</td>
+                <td>{{ bkn_object.empresa }}</td>
+                <td>{{ bkn_object.titular }}</td>
+                <td>
+                    <a href="{% url 'editar_bkn' bkn_id=bkn_object.id %}" class="btn btn-primary">Editar</a>
+                    <a href="{% url 'borrar_bkn' bkn_id=bkn_object.id %}" class="btn btn-danger">Borrar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock contenido %}
